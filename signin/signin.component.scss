@@ -1,0 +1,70 @@
+.login{
+   
+    &__formcheck{
+        padding-left: 20px;
+    }
+    &__check-label1{
+        padding-left: 21%;
+    }
+
+    &__btnlogin{
+        padding: 8px 25px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    &__title1{
+        text-align: center;
+        color: #0288D1;
+    }
+    &__notify{
+        width: 82%;
+    }
+  
+    &__signup{
+        padding-left: 2rem;
+        a{
+            text-decoration: none;
+        }
+    }
+}
+
+// .row .card {
+//     margin: 0 auto; /* Added */
+//     float: none; /* Added */
+//     margin-bottom: 10px; /* Added */
+// }
+.mt-3{
+    padding-top: 8rem !important;
+}
+
+// .userName.ng-valid[required], .ng-valid.required{
+//     border: 1px solid #42A948; 
+// }
+// .passWord.ng-invalid.ng-dirty:not(form){
+//     border: 1px solid red;
+// }
+::-webkit-input-placeholder {
+    font-style: italic;
+ }
+
+ .alert .alert-icon-col {
+    min-width: 25px;
+    max-width: 25px;
+}
+.alert-warning{
+   background-color: rgb(219, 115, 115);
+   color: white;
+   .alert-icon-col{
+    color: #C62828;
+}
+}
+
+.alert-success{
+    background-color:rgb(101, 175, 105) ;
+    color: white;
+    .alert-icon-col{
+        color: #2E7D32;
+    }
+}

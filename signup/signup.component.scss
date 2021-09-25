@@ -1,0 +1,74 @@
+.login{
+    &__signup{
+        padding: 8px 25px;
+        color: white;
+        background: #303F9F;
+        border: none;
+        cursor: pointer;
+     
+    }
+    &__title1{
+        text-align: center;
+        color: #283593;
+    }
+    &__cancel{
+        padding-left: 3rem;
+        a{
+            text-decoration: none;
+            cursor: pointer;
+            color: #00BCD4;
+        }
+    }
+  
+}
+::-webkit-input-placeholder {
+    font-style: italic;
+ }
+
+ .userNameLogin.ng-valid[required], .ng-valid.required{
+    border: 1px solid #42A948; 
+ }
+ .userNameLogin.ng-invalid.ng-dirty:not(form) {
+    border: 1px solid red; /* red */
+ }
+.firstNameLogin.ng-valid[required], .ng-valid.required{
+   border: 1px solid #42A948; 
+}
+
+.firstNameLogin.ng-invalid.ng-dirty:not(form) {
+   border: 1px solid red; /* red */
+}
+.lastNameLogin.ng-valid[required], .ng-valid.required{
+    border: 1px solid #42A948; 
+}
+.lastNameLogin.ng-invalid.ng-dirty:not(form)  {
+    border: 1px solid red; /* red */
+}
+
+.selectEmailLogin.ng-valid[required], .ng-valid.required{
+    border: 1px solid #42A948; 
+}
+.selectEmailLogin.ng-invalid.ng-dirty:not(form)  {
+    border: 1px solid red; /* red */
+}
+
+.phoneNumberLogin.ng-valid[required], .ng-valid.required{
+    border: 1px solid #42A948; 
+}
+.phoneNumberLogin.ng-invalid.ng-dirty:not(form)  {
+    border: 1px solid red; /* red */
+}
+
+.passWordLogin.ng-valid[required], .ng-valid.required{
+    border: 1px solid #42A948; 
+}
+.passWordLogin.ng-invalid.ng-dirty:not(form)  {
+    border: 1px solid red; /* red */
+}
+
+.confirmpass.ng-valid[required], .ng-valid.required{
+    border: 1px solid #42A948; 
+}
+.confirmpass.ng-invalid.ng-dirty:not(form){
+    border: 1px solid red;
+}

@@ -1,0 +1,152 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-4"></div>
+  <div class="col-xs-12 col-sm-4 mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="login__title1 card-title1 font-weight-bold">Sign Up
+          <!-- <span class=" float-right fa fa-ellipsis-h"></span> (ngSubmit)="onSubmit()-->
+        </h5>
+        <hr />
+
+        <div class="row">
+          <div class="col-sm-12 ">
+            <form [formGroup]="signUpForm" (ngSubmit)=" showSuccess(signUpForm.value)">
+              <div class="login__texttitle ">
+                <input type="text" class="form-control userNameLogin" placeholder="User Name" [formControl]="username"
+                  name="firstName" required title="User Name">
+                <div class="hiddenError" *ngIf="username.invalid && (username.dirty || username.touched)">
+                  <div *ngIf="username.errors.required" style="color: red">
+                    Please enter User Name
+                  </div>
+                </div>
+              </div>
+              <div class="login__texttitle pt-3">
+                <input type="text" class="form-control firstNameLogin" placeholder="First Name" [formControl]="firstName"
+                  name="firstName" required title="First Name">
+                <div class="hiddenError" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                  <div *ngIf="firstName.errors.required" style="color: red">
+                    Please enter First Name
+                  </div>
+                </div>
+              </div>
+
+              <div class="login__texttitle pt-3">
+                <input type="text" class="form-control lastNameLogin" placeholder="Last Name" [formControl]="lastName"
+                  name="lastName" required title="Last Name">
+                <div class="hiddenError" *ngIf="lastName.invalid && lastName.dirty">
+                  <div *ngIf="lastName.errors.required" style="color: red">
+                    Please enter Last Name
+                  </div>
+                </div>
+              </div>
+              <div class="login__texttitle pt-3">
+                <input type="text" class="form-control selectEmailLogin" placeholder="E-mail" [formControl]="email"
+                  name="email" [pattern]="selectEmail" minlength="8" required title="Email">
+                <div *ngIf="email.invalid && email.dirty">
+                  <div *ngIf="email.errors.required" style="color: red">
+                    Please enter Email
+                  </div>
+                  <div *ngIf="email.errors.minlength" style="color: red">
+                    Email must be at least 8 character long
+                  </div>
+                  <div *ngIf="email.errors&&email.errors.pattern" style="color: red">
+                    {{ errEmail}}
+                  </div>
+                </div>
+              </div>
+              <div class="login__texttitle pt-3">
+                <input type="number" class="form-control phoneNumberLogin" placeholder="Phone Number" [formControl]="phoneNumber"
+                  name="phoneNumber" onKeyPress="if(this.value.length==10) return false;" min="3" [pattern]="selectPhone"
+                  required title="Phone">
+                <div *ngIf="phoneNumber.invalid  && phoneNumber.dirty">
+                  <div *ngIf="phoneNumber.errors.required" style="color: red">
+                    Please enter phone number
+                  </div>
+                  <div *ngIf="phoneNumber.errors.pattern" style="color: red">
+                    {{errPhone}}
+                  </div>
+                </div>
+              </div>
+              <div class="login__texttitle pt-3">
+                <input type="text" class="form-control passWordLogin" placeholder="Password" [formControl]="passWord"
+                  name="passWord" minlength="8" [pattern]="selectPass" required title="Password">
+                <div *ngIf="passWord.invalid && passWord.dirty">
+                  <div *ngIf="passWord.errors.required" style="color: red">
+                    Please enter Password
+                  </div>
+                  <div *ngIf="passWord.errors.minlength" style="color: red">
+                    Password has min lenght 8 character
+                  </div>
+                  <div *ngIf="passWord.invalid && passWord.dirty" style="color: red">
+                    <div *ngIf="passWord.hasError('err')">
+                      {{passWord.errors['err']}}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="login__texttitle pt-3">
+                <input type="password" class="form-control confirmpass" placeholder="Confirm Password" [formControl]="confirmPass"
+                  name="confirmPass" [pattern]="selectPass" required title="Confirm Pass" (onKeyup)="onKey()">
+                <div *ngIf="confirmPass.invalid && confirmPass.dirty">
+                  <div *ngIf="confirmPass.errors.required" style="color: red">
+                    Please enter Password
+                  </div>
+                  <div *ngIf="confirmPass.errors&&confirmPass.errors.MatchPassword" style="color: red">
+                    Password not correct!
+                  </div>
+                </div>
+
+              </div>
+              <div class="login__button1 pt-3">
+                <!-- <button  class="btn btn-primary" (click)=""> Sign Up </button> -->
+                <button type="submit" class="login__signup" [disabled]="!signUpForm.valid">Sign Up</button>
+                <span class="login__cancel"><a (click)="goBack()">Cancel</a></span>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <div *ngFor="let notify of arrMessage; let i=index" class="login__notify ml-5">
+      <div class="alert alert-success" role="alert" *ngIf="notify.success">
+        <div class="row">
+          <div class="col-1 alert-icon-col">
+            <span class="fa fa-check fa-fw"></span>
+          </div>
+          <div class="col-10">
+            <strong>{{notify.message}}</strong>
+          </div>
+          <div class="col-1">
+            <button type="button" class="close" aria-label="Close" (click)="onClose(i)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="alert alert-warning  fade show" role="alert" *ngIf="!notify.success">
+        <div class="row">
+          <div class="col-1 alert-icon-col">
+            <span class="fa fa-exclamation-circle fa-fw"></span>
+          </div>
+          <div class="col-10">
+            <strong>{{notify.message}}</strong>
+          </div>
+          <div class="col-1">
+            <button type="button" class="close" aria-label="Close" (click)="onClose(i)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
